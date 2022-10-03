@@ -1,0 +1,41 @@
+body{
+    min-height: 100vh;
+}
+
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 20px;
+    margin: 0px;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.secao-cadastro{
+    width: 50%;
+    height: 80vh;
+    border-right: 1px solid rgba(139, 138, 138, 0.774);
+}
+.secao-cadastro > form{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.secao-cadastro > form > button{
+    margin: 15px;
+}
+
+
+.secao-pesquisa{
+    border-left: 1px solid rgba(139, 138, 138, 0.774);
+    width: 50%;
+    height: 80vh;
+}

@@ -2,6 +2,26 @@
   "dependencies": {
     "dotenv": "^16.0.3",
     "knex": "^2.3.0",
+    "nodemon": "^2.0.20",
     "pg": "^8.8.0"
-  }
+  },
+  "name": "davinti",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev" : "nodemon "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haraujos99/davinti-TestePratico.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/haraujos99/davinti-TestePratico/issues"
+  },
+  "homepage": "https://github.com/haraujos99/davinti-TestePratico#readme",
+  "description": ""
 }

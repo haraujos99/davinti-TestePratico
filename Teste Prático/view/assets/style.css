@@ -34,8 +34,27 @@ header{
 }
 
 
+.telefones_extras > input{
+    margin-left: 64px;
+    display: flex;
+    flex-direction: column;
+}
+
 .secao-pesquisa{
     border-left: 1px solid rgba(139, 138, 138, 0.774);
     width: 50%;
     height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
+
+select{
+    width: 400px;
+}
+
+
+
+
+

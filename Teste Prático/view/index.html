@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agenda Telefônica</title>
     <link rel="stylesheet" href="assets/style.css">
+    <script src="scripts/cadastro.js" defer></script>
 </head>
 <body>
     <header>
@@ -23,14 +24,30 @@
                 </label>
                 <label>
                        Telefone: <input type="text" id="input_telefone" class="input-telefone">
-                    <button id="btn_addTelefone">+</button>
+                    <button id="btn_addTelefone" >+</button>
+                    <div class="telefones_extras"></div>
                 </label>
-
-                <button>Cadastrar</button>
+                <div class="btns">
+                    <button id="btn-cadastrar">Cadastrar</button>
+                    <button id="btn-alterar">Alterar</button>
+                </div>
+                
             </form>
         </div>
         <div class="secao-pesquisa">
-
+                <label>
+                    Nome ou numero:
+                    <input type="text" id="input-pesquisa">
+                    <button id="btn-pesquisar">Pesquisar</button>
+                </label>
+                <br>
+                <select name="lista-contatos" id="lista-contatos" size="10">
+                </select>
+                <br>
+                <div class="btn-edita-apaga">
+                    <button id="btn-editar">Editar contato</button>
+                    <button id="btn-apagar">Apagar contato</button>
+                </div>
         </div>
     </div>
 

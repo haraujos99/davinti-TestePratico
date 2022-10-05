@@ -1,5 +1,3 @@
-require("dotenv").config()
-
 const knex = require('knex')({
     client: 'postgres',
     connection: {
@@ -9,6 +7,7 @@ const knex = require('knex')({
       password : "36221087",
       database : 'davinti'
     }
-  });
+  }
+);
 
   module.exports = knex;

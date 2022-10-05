@@ -1,4 +1,6 @@
+const { fstat } = require('fs');
 const knex = require('../database/connection');
+const { handleLogsDelete } = require('../utils/handleLogDelete');
 
 
 const addContact = async(req, res)=>{
@@ -57,7 +59,7 @@ const listAllContacts = async (req, res) =>{
         if(list.length > 0) {
             return res.status(200).json(list);
         } else{
-            return res.status(500).json({"message": "Não foi possivel listar os contatos"});
+            return res.status(500).json({"message": "Nenhum contato cadastrado"});
         }
 
     } catch (error) {
@@ -138,26 +140,26 @@ const updateContact = async (req, res) => {
 
 const deleteNumber = async (req, res) => {
     const {id} = req.params;
-
+    
     const contact = await knex('telefones').where('id_contato', +id).first();
-
+    
     if(!contact) {
         return res.status(404).json({ "mensagem": "Contato não encontrado" });
     }
-
+    
     try {
         const numberDelete = await knex('telefones').delete().where('id_contato', +id);
-
+        
         if (numberDelete.length === 0) {
             return res.status(500).json({ "mensagem": "Não foi possível deletar o contato" });
         }
-
+        
+        handleLogsDelete(id);
         return res.status(200).json({ "mensagem": "Contato excluido" });
     } catch (error) {
         return res.status(500).json(error.message);           
     }
 }
-
 
 module.exports ={
     addContact,

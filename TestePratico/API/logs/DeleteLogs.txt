@@ -1,0 +1,1 @@
+LOG: Numero do contato com o id 10 excluido

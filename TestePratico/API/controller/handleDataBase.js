@@ -4,7 +4,7 @@ const { handleLogsDelete } = require('../utils/handleLogDelete');
 
 
 const addContact = async(req, res)=>{
-    const {name, age, phoneNumber}= req.body;
+    const {nome, idade, numero}= req.body;
 
     if(!name){
         return res.status(400).json({"message": "Insira um nome"});
@@ -22,8 +22,8 @@ const addContact = async(req, res)=>{
 
     try {
         const newContact = {
-            nome: name,
-            idade: age
+            nome,
+            idade
         }
 
         const contactRegister = await knex('contatos').insert(newContact).returning('*');
@@ -31,7 +31,7 @@ const addContact = async(req, res)=>{
         if(contactRegister.length > 0){
             const newPhoneNumber = {
                 id_contato: contactRegister[0].id,
-                numero: phoneNumber
+                numero
             }
 
             const numberRegister = await knex('telefones').insert(newPhoneNumber).returning('*');
@@ -54,7 +54,7 @@ const listAllContacts = async (req, res) =>{
     try {
         const list = await knex('contatos')
         .join('telefones', 'contatos.id', 'telefones.id_contato')
-        .select('contatos.id', 'contatos.nome', 'telefones.numero');
+        .select('contatos.id', 'contatos.nome','contatos.idade', 'telefones.numero');
         
         if(list.length > 0) {
             return res.status(200).json(list);
@@ -99,13 +99,13 @@ const listContactByNameOrNumber = async (req, res)=>{
 
 const updateContact = async (req, res) => {
     const {id} = req.params;
-    const {name, age, phoneNumber}= req.body;
+    const {nome, idade, numero}= req.body;
 
-    if(!name){
+    if(!nome){
         return res.status(400).json({"message": "O nome precisa estar preenchido"});
     }
 
-    if(!phoneNumber){
+    if(!numero){
         return res.status(400).json({"message": "O telefone precisa estar preenchido"});
         
     } 
@@ -118,12 +118,12 @@ const updateContact = async (req, res) => {
 
     try {
         const contactUpdate = await knex('contatos').update({
-            nome: name,
-            idade: age,
+            nome,
+            idade,
         }).where('id', +id);
 
         const phoneUpdate = await knex('telefones').update({
-            numero: phoneNumber
+            numero
         }).where('id_contato', +id);
 
         if (contactUpdate.length === 0) {

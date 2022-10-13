@@ -6,18 +6,18 @@ const { handleLogsDelete } = require('../utils/handleLogDelete');
 const addContact = async(req, res)=>{
     const {nome, idade, numero}= req.body;
 
-    if(!name){
+    if(!nome){
         return res.status(400).json({"message": "Insira um nome"});
     }
 
-    if(!phoneNumber){
+    if(!numero){
         return res.status(400).json({"message": "Nenhum telefone inserido"});
         
     } 
-    const numberAlreadyRegistered = await knex('telefones').where('numero', phoneNumber);
+    const numberAlreadyRegistered = await knex('telefones').where('numero', numero);
 
         if(numberAlreadyRegistered.length > 0){
-            return res.status(400).json({"message": `O número (${phoneNumber}) já se encontra vinculado ao contato de ${numberAlreadyRegistered[0].nome}`});
+            return res.status(400).json({"message": `O número (${numero}) já se encontra vinculado ao contato de ${numberAlreadyRegistered[0].nome}`});
         }
 
     try {
